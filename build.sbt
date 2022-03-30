@@ -25,11 +25,11 @@ ThisBuild / organizationName := "Typelevel"
 
 ThisBuild / startYear := Some(2021)
 
-ThisBuild / crossScalaVersions := Seq("2.12.14", "2.13.6", "3.0.2")
+ThisBuild / crossScalaVersions := Seq("2.13.6")
 
 ThisBuild / githubWorkflowOSes ++= Seq("macos-latest", "windows-latest")
 
-val Fs2Version = "3.0.4"
+val Fs2Version = "3.2.6"
 
 lazy val root = project.in(file("."))
   .aggregate(core, benchmarks)
@@ -39,8 +39,8 @@ lazy val core = project.in(file("core"))
   .settings(
     name := "fs2-netty",
     libraryDependencies ++= Seq(
-      "io.netty"     % "netty-all" % "4.1.69.Final",
-      "com.comcast" %% "ip4s-core" % "3.0.3",
+      "io.netty"     % "netty-all" % "4.1.75.Final",
+      "com.comcast" %% "ip4s-core" % "3.1.2",
       "co.fs2"      %% "fs2-core"  % Fs2Version,
 
       "org.typelevel" %% "cats-effect-testing-specs2" % "1.3.0" % Test))

@@ -69,7 +69,7 @@ private final class SocketHandler[F[_]: Async] (
   val writes: Pipe[F, Byte, INothing] =
     _.chunks.evalMap(c => write(c) *> isOpen).takeWhile(b => b).drain
 
-  private[this] val isOpen: F[Boolean] =
+  val isOpen: F[Boolean] =
     Sync[F].delay(channel.isOpen())
 
   override def channelRead(ctx: ChannelHandlerContext, msg: AnyRef) =
